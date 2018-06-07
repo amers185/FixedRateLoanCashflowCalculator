@@ -1,3 +1,4 @@
+using CashflowCalculator.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CashflowCalculator
 {
-    class Calculator
+    public class Calculator
     {
         private static decimal MonthlyPayment(decimal amount, int duration, decimal r) 
         {

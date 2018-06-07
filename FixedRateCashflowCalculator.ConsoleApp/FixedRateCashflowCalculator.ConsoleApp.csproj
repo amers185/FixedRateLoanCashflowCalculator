@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{61DBEFFA-5E99-4060-8019-3C10C341C120}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>FixedRateCashflowCalculator</RootNamespace>
-    <AssemblyName>FixedRateCashflowCalculator</AssemblyName>
+    <ProjectGuid>{525D0E4E-7561-4363-9EAD-6D1DC2BF5D82}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>FixedRateCashflowCalculator.ConsoleApp</RootNamespace>
+    <AssemblyName>FixedRateCashflowCalculator.ConsoleApp</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,12 +31,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,17 +44,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calculator.cs" />
+    <Compile Include="LoanContext.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FixedRateCashflowCalculator.DAL\FixedRateCashflowCalculator.DAL.csproj">
+      <Project>{5d157b95-cee1-40e6-a267-265589b57dad}</Project>
+      <Name>FixedRateCashflowCalculator.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FixedRateCashflowCalculator.Models\FixedRateCashflowCalculator.Models.csproj">
       <Project>{F3A5238A-1613-4A0B-8A30-A3FD0A4164DE}</Project>
       <Name>FixedRateCashflowCalculator.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FixedRateCashflowCalculator\FixedRateCashflowCalculator.csproj">
+      <Project>{61dbeffa-5e99-4060-8019-3c10c341c120}</Project>
+      <Name>FixedRateCashflowCalculator</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="EntityFramework">
+      <Version>5.0.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

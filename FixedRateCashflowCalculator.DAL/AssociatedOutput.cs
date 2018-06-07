@@ -1,12 +1,12 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CashflowCalculator
+namespace FixedRateCashflowCalculator.DAL
 {
-    public class CashflowRow
+    public class AssociatedOutput
     {
         public int Month { get; set; }
 
@@ -15,5 +15,8 @@ namespace CashflowCalculator
         public decimal PrincipalPayment { get; set; }
 
         public decimal RemainingBalance { get; set; }
+
+        public ICollection<UserLoanInput> UserLoanInputs { get; set; }
+
     }
 }
