@@ -17,6 +17,6 @@ namespace FixedRateCashflowCalculator.ConsoleApp
 
         public DbSet<UserLoanInput> LoanInputs { get; set; }
 
-        public DbSet<AssociatedOutput> Grades { get; set; }
+        public DbSet<AssociatedOutput> AssociatedOutputs { get; set; }
     }
 }
