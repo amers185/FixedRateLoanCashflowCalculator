@@ -1,4 +1,5 @@
 using CashflowCalculator.Models;
+using FixedRateCashflowCalculator.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,36 +14,39 @@ namespace CashflowCalculator.ConsoleApp
         {
             int indication = 1;
             List<List<CashflowRow>> fullList = new List<List<CashflowRow>>();
+
             
-            while (indication > 0)
-            {
-                Loan loan = new Loan();
-                Console.Write("Please enter in your loan amount: ");
-                string amount1 = Console.ReadLine();
-                loan.Amount = decimal.Parse(amount1);
-
-                Console.Write("Please enter in your loan duration: ");
-                string duration1 = Console.ReadLine();
-                loan.Duration = Int32.Parse(duration1);
-
-                Console.Write("Please enter in your interest rate: ");
-                string r1 = Console.ReadLine();
-                loan.Rate = decimal.Parse(r1);
-
-                List<CashflowRow> flowList = Calculator.CalculateCashflow(loan);
-                fullList.Add(flowList);
-                
-                int length = flowList.Count;
-                Console.WriteLine("Month\t\tInterest\tPrincipal\tRemaining Balance");
-                for (int i = 0; i < length; i++)
+                while (indication > 0)
                 {
-                    Console.WriteLine(flowList[i].Month + "\t\t" + Math.Round(flowList[i].InterestPayment, 2) + "\t\t" +
-                        Math.Round(flowList[i].PrincipalPayment, 2) + "\t\t" + Math.Round(flowList[i].RemainingBalance, 2));
-                }
+                    Loan loan = new Loan();
+                    Console.Write("Please enter in your loan amount: ");
+                    string amount1 = Console.ReadLine();
+                    loan.Amount = decimal.Parse(amount1);
 
-                Console.Write("Would you want to enter anoother one? yes(1)/no(0)");
-                indication = int.Parse(Console.ReadLine());
-            }
+                    Console.Write("Please enter in your loan duration: ");
+                    string duration1 = Console.ReadLine();
+                    loan.Duration = Int32.Parse(duration1);
+
+                    Console.Write("Please enter in your interest rate: ");
+                    string r1 = Console.ReadLine();
+                    loan.Rate = decimal.Parse(r1);
+
+                    SaveFunction.AddLoan(loan);
+                    List<CashflowRow> flowList = Calculator.CalculateCashflow(loan);
+                    fullList.Add(flowList);
+
+                    int length = flowList.Count;
+                    Console.WriteLine("Month\t\tInterest\tPrincipal\tRemaining Balance");
+                    for (int i = 0; i < length; i++)
+                    {
+                        Console.WriteLine(flowList[i].Month + "\t\t" + Math.Round(flowList[i].InterestPayment, 2) + "\t\t" +
+                            Math.Round(flowList[i].PrincipalPayment, 2) + "\t\t" + Math.Round(flowList[i].RemainingBalance, 2));
+                    }
+
+                    Console.Write("Would you want to enter anoother one? yes(1)/no(0)");
+                    indication = int.Parse(Console.ReadLine());
+                }
+            
 
             int maxMonth = fullList.Max(x => x.Count);
             List<CashflowRow> pool = new List<CashflowRow>();
