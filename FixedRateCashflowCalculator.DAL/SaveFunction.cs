@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FixedRateCashflowCalculator.DAL
 {
-    public class SaveFunction
+    public static class SaveFunction
     {
         public static int AddLoan(Loan loan)
         {

@@ -12,18 +12,13 @@ namespace FixedRateCashflowCalculator.DAL
 {
     public class LoanContext : DbContext 
     {
-        public LoanContext() : base("name=LoanContextString")
-        {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<LoanContext, FixedRateCashflowCalculator.DAL.Migrations.Configuration>());
-        }
+        public LoanContext() : base("name=LoanContextString") { }
+        
 
         
 
         public DbSet<Loan> Loans { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-        }
+      
     }
 }
