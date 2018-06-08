@@ -48,6 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LoanContext.cs" />
+    <Compile Include="Migrations\201806081642452_First_Migration.cs" />
+    <Compile Include="Migrations\201806081642452_First_Migration.Designer.cs">
+      <DependentUpon>201806081642452_First_Migration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveFunction.cs" />
@@ -64,6 +68,11 @@
       <Project>{F3A5238A-1613-4A0B-8A30-A3FD0A4164DE}</Project>
       <Name>FixedRateCashflowCalculator.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201806081642452_First_Migration.resx">
+      <DependentUpon>201806081642452_First_Migration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

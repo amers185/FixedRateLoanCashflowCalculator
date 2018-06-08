@@ -14,7 +14,7 @@ namespace CashflowCalculator.ConsoleApp
         {
             int indication = 1;
             List<List<CashflowRow>> fullList = new List<List<CashflowRow>>();
-
+          
             
                 while (indication > 0)
                 {
