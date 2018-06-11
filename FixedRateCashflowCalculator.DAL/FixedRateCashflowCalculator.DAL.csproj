@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CashflowComputation.cs" />
     <Compile Include="LoanContext.cs" />
     <Compile Include="Migrations\201806081642452_First_Migration.cs" />
     <Compile Include="Migrations\201806081642452_First_Migration.Designer.cs">
@@ -67,6 +68,10 @@
     <ProjectReference Include="..\FixedRateCashflowCalculator.Models\FixedRateCashflowCalculator.Models.csproj">
       <Project>{F3A5238A-1613-4A0B-8A30-A3FD0A4164DE}</Project>
       <Name>FixedRateCashflowCalculator.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FixedRateCashflowCalculator\FixedRateCashflowCalculator.csproj">
+      <Project>{61DBEFFA-5E99-4060-8019-3C10C341C120}</Project>
+      <Name>FixedRateCashflowCalculator</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

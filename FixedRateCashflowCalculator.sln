@@ -16,7 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixedRateCashflowCalculator
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixedRateCashflowCalculator.DAL", "FixedRateCashflowCalculator.DAL\FixedRateCashflowCalculator.DAL.csproj", "{5D157B95-CEE1-40E6-A267-265589B57DAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixedRateCashflowCalculator.API", "FixedRateCashflowCalculator.API\FixedRateCashflowCalculator.API.csproj", "{0200DB9D-8D97-4D16-8FCE-794604169713}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixedRateLoanCashflowCalculator.API", "FixedRateLoanCashflowCalculator.API\FixedRateLoanCashflowCalculator.API.csproj", "{024CF10D-AB89-4E22-916C-19B795A0F0CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,10 +40,10 @@ Global
 		{5D157B95-CEE1-40E6-A267-265589B57DAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D157B95-CEE1-40E6-A267-265589B57DAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D157B95-CEE1-40E6-A267-265589B57DAD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0200DB9D-8D97-4D16-8FCE-794604169713}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0200DB9D-8D97-4D16-8FCE-794604169713}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0200DB9D-8D97-4D16-8FCE-794604169713}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0200DB9D-8D97-4D16-8FCE-794604169713}.Release|Any CPU.Build.0 = Release|Any CPU
+		{024CF10D-AB89-4E22-916C-19B795A0F0CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{024CF10D-AB89-4E22-916C-19B795A0F0CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{024CF10D-AB89-4E22-916C-19B795A0F0CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{024CF10D-AB89-4E22-916C-19B795A0F0CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
