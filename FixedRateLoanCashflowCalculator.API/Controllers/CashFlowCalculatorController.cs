@@ -15,8 +15,8 @@ namespace FixedRateCashflowCalculator.API.Controllers
     [EnableCors("*", "*", "*")]
     public class CashflowCalculatorController : ApiController
     {
-     
 
+        
 
         [HttpPost]
         public IHttpActionResult AddLoan([FromBody] Loan loanInput)

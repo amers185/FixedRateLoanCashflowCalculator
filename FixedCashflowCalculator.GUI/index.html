@@ -17,13 +17,66 @@
     <script src="app.module.js"></script>
 
 </head>
-<body id="main" ng-app="cashflowCalculatorApp">
-    <div class="container">
-        <div class="row">
-            <h1 class="col-lg-4">Cashflow Calculator<br><small class="text-muted">Written by Syed Usama Amer</small></h1>
+<body ng-app="cashflowCalculatorApp" ng-controller="LoanController as model">
+    <div class="overlay">
+        <div class="container">
+            <div class="row">
+                <h1>Cashflow Calculator</h1>
+            </div>
+
+            <div class="col-sm-6">
+                <form name="inputform">
+                    Balance:<br>
+                    <input type="number" name="balance" ng-model="Amount" ng-required="true"><br>
+                    Term:<br />
+                    <input type="number" name="term" ng-model="Duration" ng-required="true"><br />
+                    Interest Rate:<br />
+                    <input type="number" name="rate" ng-model="Rate" ng-required="true" /><br />
+                    <br><br>
+                    <button class="btn btn-success" ng-click="inputform.$valid && model.inputLoan(Amount, Duration, Rate)">Submit</button>
+                    <!--<button class="btn btn-success" ng-click="model.getLoans();">Get Loans</button>-->
+                </form>
+            </div>
+            <form ng-submit="model.getLoans()">
+                <table class="table">
+                    <tr>
+                        <th></th>
+                        <th>Amount</th>
+                        <th>Duration</th>
+                        <th>Rate</th>
+                    </tr>
+                    <tr ng-repeat="loan in model.loans">
+                        <td><input type="checkbox" ng-model="loan.isChecked"></td>
+                        <td>{{loan.amount | currency}}</td>
+                        <td>{{loan.duration}}</td>
+                        <td>{{loan.rate | number:2}}%</td>
+                    </tr>
+                </table>
+                <button class="btn btn-success" ng-click="loansCollapsed = !loansCollapsed" type="submit">Get Loans</button>
+            </form>
+
         </div>
-        <loans></loans>
+        <div>
+            <button class="btn btn-success" ng-click="model.getCashFlows()">Get Cashflows</button>
+            <div ng-repeat="cashFlow in model.cashFlows">
+                <table class="table">
+                    <tr>
+                        <th>Month</th>
+                        <th>Interest</th>
+                        <th>Principal</th>
+                        <th>Remaining Balance</th>
+                    </tr>
+                    <tr ng-repeat="cashFlowRow in model.cashFlows">
+                        <td>{{cashFlowRow.month}}</td>
+                        <td>{{cashFlowRow.interestPayment | number:2}}%</td>
+                        <td>{{cashFlowRow.principalPayment | currency}}</td>
+                        <td>{{cashFlowRow.remainingBalance | currency}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
 </body>
 </html>
+
 
