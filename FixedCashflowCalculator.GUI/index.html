@@ -66,11 +66,11 @@
                         <th>Principal</th>
                         <th>Remaining Balance</th>
                     </tr>
-                    <tr ng-repeat="cashFlowRow in model.cashFlows">
-                        <td>{{cashFlowRow.month}}</td>
-                        <td>{{cashFlowRow.interestPayment | number:2}}%</td>
-                        <td>{{cashFlowRow.principalPayment | currency}}</td>
-                        <td>{{cashFlowRow.remainingBalance | currency}}</td>
+                    <tr ng-repeat="monthlyPayment in cashFlow.monthlyPayments">
+                        <td>{{monthlyPayment.month}}</td>
+                        <td>{{monthlyPayment.interest | number:2}}%</td>
+                        <td>{{monthlyPayment.principal | currency}}</td>
+                        <td>{{monthlyPayment.remainingBalance | currency}}</td>
                     </tr>
                 </table>
             </div>

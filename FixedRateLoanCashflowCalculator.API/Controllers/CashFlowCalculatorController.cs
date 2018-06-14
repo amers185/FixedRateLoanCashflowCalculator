@@ -53,7 +53,7 @@ namespace FixedRateCashflowCalculator.API.Controllers
         [HttpGet]
         public IHttpActionResult GetCashflows()
         {
-            var cashflows = CashflowComputation.GetCashFlows();
+            var cashflows = CashflowCalculator.DAL.Services.CashflowService.GetCashFlows();
             if (cashflows == null)
             {
                 return BadRequest("Unable to retrieve cashflows");

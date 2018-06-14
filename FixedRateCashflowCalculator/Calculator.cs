@@ -1,4 +1,5 @@
 using CashflowCalculator.Models;
+using FixedRateCashflowCalculator.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,6 +50,63 @@ namespace CashflowCalculator
                 RemainingBalance = flowRow.RemainingBalance;
             }
             return flowList; 
+        }
+        public static Cashflow CalculateLoanCashflow(Loan loan)
+        {
+            Cashflow cashflow = new Cashflow();
+
+            if (loan.Duration <= 0 || loan.Rate <= 0 || loan.Amount <= 0)
+                throw new ArgumentOutOfRangeException("please ensure that none of your entered values are zero or less");
+
+            decimal totalMonthlyPayment = (loan.Amount * (loan.Rate / 1200)) / ((decimal)(1 - (Math.Pow(((double)(1 + loan.Rate / 1200)), -loan.Duration))));
+            decimal remainingBalance = loan.Amount;
+
+            for (int month = 1; month <= loan.Duration; month++)
+            {
+                decimal interest = remainingBalance * (loan.Rate / 1200);
+                decimal principal = totalMonthlyPayment - interest;
+                remainingBalance = remainingBalance - principal;
+                cashflow.MonthlyPayments.Add(new MonthlyPayment()
+                {
+                    Interest = interest,
+                    Principal = principal,
+                    RemainingBalance = remainingBalance,
+                    month = month
+                });
+            }
+
+            return cashflow;
+        }
+
+        public static Cashflow CalculatePoolCashflow(List<Cashflow> cashflows)
+        {
+            List<MonthlyPayment> pool = new List<MonthlyPayment>();
+            foreach (var cashflow in cashflows)
+            {
+                int x = 0;
+                foreach (var monthlyPayment in cashflow.MonthlyPayments)
+                {
+                    if (x >= pool.Count)
+                    {
+                        pool.Add(new MonthlyPayment()
+                        {
+                            Interest = monthlyPayment.Interest,
+                            Principal = monthlyPayment.Principal,
+                            RemainingBalance = monthlyPayment.RemainingBalance,
+                            month = monthlyPayment.month
+                        });
+
+                    }
+                    else
+                    {
+                        pool[x].Interest += monthlyPayment.Interest;
+                        pool[x].Principal += monthlyPayment.Principal;
+                        pool[x].RemainingBalance += monthlyPayment.RemainingBalance;
+                    }
+                    x++;
+                }
+            }
+            return new Cashflow() { MonthlyPayments = pool };
         }
 
     }

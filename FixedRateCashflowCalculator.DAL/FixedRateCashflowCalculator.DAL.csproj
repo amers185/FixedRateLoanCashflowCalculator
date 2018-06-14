@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CashflowComputation.cs" />
+    <Compile Include="CashflowService.cs" />
     <Compile Include="LoanContext.cs" />
     <Compile Include="Migrations\201806081642452_First_Migration.cs" />
     <Compile Include="Migrations\201806081642452_First_Migration.Designer.cs">
