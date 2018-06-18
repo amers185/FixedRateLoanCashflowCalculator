@@ -1,7 +1,60 @@
 ﻿body {
-    background-color: mediumaquamarine;
+    /*background: linear-gradient(to top right, #33ccff 0%, #ff99cc 100%);*/
+    /*background: linear-gradient(to bottom, #ffffff 40%, #00cc66 200%);*/
+    /*background: linear-gradient(to bottom, #ffffff 0%, #00cc66 120%);*/
+    background: #56ab2f; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #a8e063, #56ab2f); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: 100vh
 }
 
-h1 {
-    color: green;
+h1{
+    color: black;
+    margin: 0 auto;
+    text-align: center;
+}
+
+table {
+    border: 1px solid black;
+    /*border-spacing: 0;*/
+}
+
+.leftcolumn {
+    float: left;
+    width: 50%;
+}
+
+table tr td {
+    border: 1px solid black;
+}
+
+table th {
+    border: 1px solid black;
+}
+
+/* Right column */
+.rightcolumn {
+    float: left;
+    width: 50%;
+    padding-left: 20px;
+}
+
+.about {
+    position: absolute;
+    bottom: 0;
+    top: 350px;
+}
+
+.overlay {
+    /*background: linear-gradient(to top right, #33ccff 0%, #ff99cc 100%);*/
+    /*background: linear-gradient(rgb(41, 128, 185), rgb(109, 213, 250), rgb(255, 255, 255));
+    --darkreader-inline-bgimage: linear-gradient(#37759c, #5ec4e5, #e7e1d6);
+    --darkreader-inline-bgcolor: initial;*/
+    /*background: linear-gradient(to right, rgb(18, 194, 233), rgb(196, 113, 237), rgb(246, 79, 89));
+    --darkreader-inline-bgimage: linear-gradient(to right, #2aa9c2, #b25ed5, #e03f46);
+    --darkreader-inline-bgcolor: initial;*/
+    background: #56ab2f; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #a8e063, #56ab2f); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    min-height: 100vh
 }

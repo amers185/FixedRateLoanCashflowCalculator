@@ -17,14 +17,16 @@
     <script src="app.module.js"></script>
 
 </head>
-<body ng-app="cashflowCalculatorApp" ng-controller="LoanController as model">
+<body ng-app="cashflowCalculatorApp" ng-controller="LoanController as model" id="top">
     <div class="overlay">
         <div class="container">
             <div class="row">
-                <h1>Cashflow Calculator</h1>
+                <h1>Cashflow Calculator<br><small> Written by Syed Usama Amer</small></h1>
             </div>
-
+            <br> <br>
             <div class="col-sm-6">
+                <p> <em> Please enter the details of your loan in the fields below and click the
+                    submit button. </em></p>
                 <form name="inputform">
                     Balance:<br>
                     <input type="number" name="balance" ng-model="Amount" ng-required="true"><br>
@@ -34,48 +36,82 @@
                     <input type="number" name="rate" ng-model="Rate" ng-required="true" /><br />
                     <br><br>
                     <button class="btn btn-success" ng-click="inputform.$valid && model.inputLoan(Amount, Duration, Rate)">Submit</button>
-                    <!--<button class="btn btn-success" ng-click="model.getLoans();">Get Loans</button>-->
+                    <br><br>
                 </form>
-            </div>
-            <form ng-submit="model.getLoans()">
-                <table class="table">
-                    <tr>
-                        <th></th>
-                        <th>Amount</th>
-                        <th>Duration</th>
-                        <th>Rate</th>
-                    </tr>
-                    <tr ng-repeat="loan in model.loans">
-                        <td><input type="checkbox" ng-model="loan.isChecked"></td>
-                        <td>{{loan.amount | currency}}</td>
-                        <td>{{loan.duration}}</td>
-                        <td>{{loan.rate | number:2}}%</td>
-                    </tr>
-                </table>
-                <button class="btn btn-success" ng-click="loansCollapsed = !loansCollapsed" type="submit">Get Loans</button>
-            </form>
 
-        </div>
-        <div>
-            <button class="btn btn-success" ng-click="model.getCashFlows()">Get Cashflows</button>
-            <div ng-repeat="cashFlow in model.cashFlows">
-                <table class="table">
-                    <tr>
-                        <th>Month</th>
-                        <th>Interest</th>
-                        <th>Principal</th>
-                        <th>Remaining Balance</th>
-                    </tr>
-                    <tr ng-repeat="monthlyPayment in cashFlow.monthlyPayments">
-                        <td>{{monthlyPayment.month}}</td>
-                        <td>{{monthlyPayment.interest | number:2}}%</td>
-                        <td>{{monthlyPayment.principal | currency}}</td>
-                        <td>{{monthlyPayment.remainingBalance | currency}}</td>
-                    </tr>
-                </table>
+
+
+                <div data-ng-init="model.getLoans()">
+                    <div>
+                        <p>
+                            <em>
+                                In order to generate a table of loans currently stored in the SQL Database,
+                                please click the get loans button.
+                            </em>
+                        </p>
+                        <button class="btn btn-success" ng-click="loansCollapsed = !loansCollapsed" t>Get Loans</button>
+                        <br> <br>
+                        <p>
+                            <em>
+                                In order to generate a pool of cashflows for all
+                                loans currently stored in the SQL Database,
+                                please click the get cashflows button.
+                            </em>
+                        </p>
+                        <button class="btn btn-success" ng-click="model.getCashFlows()">Get Cashflows</button>
+                        <a href="#mid">Go to top of pool</a>
+                        <br> <br>
+                    </div>
+                </div>
+                <div collapse="!loansCollapsed">
+                    <form ng-submit="model.deleteLoans()">
+                        <p> <em> In order to select the loans you want to delete, please check the
+                             desired box(s) in the table and click on the delete button.</em></p>
+                        <button class="btn btn-success" type="submit">Delete</button>
+                        <br> <br>
+                        <table class="table">
+                            <tr>
+                                <th>To Delete</th>
+                                <th>Amount</th>
+                                <th>Duration</th>
+                                <th>Rate</th>
+                            </tr>
+                            <tr ng-repeat="loan in model.loans">
+                                <td><input type="checkbox" ng-model="loan.isChecked"></td>
+                                <td>{{loan.amount | currency}}</td>
+                                <td>{{loan.duration}}</td>
+                                <td>{{loan.rate | number:2}}%</td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+
+            <div>
+                <br>
+                <!--<button class="btn btn-success" ng-click="model.getCashFlows()">Get Cashflows</button>-->
+                <div ng-repeat="cashFlow in model.cashFlows">
+                    <table class="table">
+                        <tr id="mid">
+                            <th>Month</th>
+                            <th>Interest</th>
+                            <th>Principal</th>
+                            <th>Remaining Balance</th>
+                        </tr>
+  
+                        <tr ng-repeat="monthlyPayment in cashFlow.monthlyPayments">
+                            <td>{{monthlyPayment.month}}</td>
+                            <td>{{monthlyPayment.interest | number:2}}%</td>
+                            <td>{{monthlyPayment.principal | currency}}</td>
+                            <td>{{monthlyPayment.remainingBalance | currency}}</td>
+                        </tr>
+                    </table>
+                    <a href="#top">Back to top of page</a>
+                </div>
             </div>
         </div>
-    </div>
+        </div>
+
 </body>
 </html>
 

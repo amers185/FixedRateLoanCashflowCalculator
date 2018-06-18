@@ -30,7 +30,24 @@ cashflowCalculatorModule.controller('LoanController', ['$scope', '$http', functi
             }
         );
     };
-   
+
+    self.deleteLoans = function () {
+        self.loans2BeDeleted = [];
+        for (let x = 0; x < self.loans.length; x++) {
+            if (self.loans[x].isChecked === true)
+                self.loans2BeDeleted.push(self.loans[x].id);
+        }
+        $http.post('http://localhost:50148/api/CashflowCalculator/DeleteLoans', self.loans2BeDeleted).then(
+            function (response) {
+                self.getLoans();
+            },
+            function (error) {
+                alert('Delete failed, try again');
+                console.log(error);
+            }
+        );
+    };
+
     class MonthlyPayment {
         constructor(Month, Interest, Pricipal, RemainingBalance) {
             this.Month = Month;
