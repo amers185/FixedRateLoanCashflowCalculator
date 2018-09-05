@@ -1,4 +1,4 @@
 ## Fixed Rate Loan Cashflow Calculator
 
 ----
-An application to calculate cashflows for a fixed rate loan.
+Built a performant web application that predicted future cashflows for financial instruments using macro-economic data with C#, HTML, SQL, CSS & Angular in Visual Studio environment 
